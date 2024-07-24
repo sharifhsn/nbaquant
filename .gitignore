@@ -1,2 +1,5 @@
 .venv/
 dist/
+.env
+data/*
+!data/
