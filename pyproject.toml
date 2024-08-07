@@ -20,6 +20,7 @@ sqlalchemy = "^2.0.31"
 psycopg = "^3.2.1"
 psycopg2 = "^2.9.9"
 nba-api = "^1.5.0"
+pyodbc = "^5.1.0"
 
 
 [tool.poetry.group.dev.dependencies]
