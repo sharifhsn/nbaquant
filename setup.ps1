@@ -14,16 +14,19 @@ function Install-IfNotExists {
 }
 
 # Install uv if not exists
-Install-IfNotExists -CommandName "uv" -InstallCommand "irm https://astral.sh/ruff/install.ps1 | iex"
+Install-IfNotExists -CommandName "uv" -InstallCommand "irm https://astral.sh/uv/install.ps1 | iex"
 
 # Install ruff if not exists
-Install-IfNotExists -CommandName "ruff" -InstallCommand "irm https://astral.sh/ruff/install.ps1 | iex"
+Install-IfNotExists -CommandName "ruff" -InstallCommand "irm https://astral.sh/uv/install.ps1 | iex"
 
 # Ensure ~/.cargo/bin is in PATH
 $CargoBinPath = "$HOME\.cargo\bin"
 if (-not $env:PATH.Contains($CargoBinPath)) {
     Write-Host "Adding ~/.cargo/bin to PATH"
     $env:PATH = "$CargoBinPath;$env:PATH"
+    
     # Optionally, add to the profile for future sessions
-    Add-Content -Path $PROFILE -Value "`n`$env:PATH = `"`$CargoBinPath;$env:PATH`"`"
+    $PathUpdate = "`$env:PATH = '$CargoBinPath;$env:PATH'"
+    Add-Content -Path $PROFILE -Value $PathUpdate
+    Write-Host "PATH updated in $PROFILE. Please restart your shell or run: `n`source $PROFILE`n"
 }
