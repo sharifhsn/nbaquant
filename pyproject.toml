@@ -18,14 +18,15 @@ dependencies = [
     "psycopg",
     "psycopg2",
     "mysqlclient",
-    "cx-oracle",
+    #"cx-oracle",
     ## environment management
     "python-dotenv",
     "ipykernel",
     ## api interaction
     "nba-api",
     ## presentation
-    "jinja2"
+    "jinja2",
+    "scikit-learn>=1.6.1",
 ]
 
 [tool.uv]
